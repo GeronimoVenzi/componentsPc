@@ -22,6 +22,7 @@ class Carrito {
         }
         let productosLS;
         productosLS = this.obtenerProductosLocalStorage();
+        console.log(productosLS)
         productosLS.forEach(function (productoLS) {
             if (productoLS.id === infoProducto.id) {
                 productosLS = productoLS.id;
@@ -29,6 +30,7 @@ class Carrito {
         });
 
         if (productosLS === infoProducto.id) {
+            console.log(productosLS)
             Swal.fire({
                 type: 'info',
                 title: 'Oops...',
@@ -91,10 +93,14 @@ class Carrito {
         let productos;
         //Toma valor de un arreglo con datos del LS
         productos = this.obtenerProductosLocalStorage();
+        console.log(productos, 'estos productos')
+        console.log(producto, 'y este producto')
         //Agregar el producto al carrito
         productos.push(producto);
         //Agregamos al LS
         localStorage.setItem('productos', JSON.stringify(productos));
+        productos = this.obtenerProductosLocalStorage()
+        console.log(productos, 'estos es produc2')
     }
 
     //Comprobar que hay elementos en el LS
@@ -108,6 +114,7 @@ class Carrito {
         else {
             productoLS = JSON.parse(localStorage.getItem('productos'));
         }
+        console.log(productoLS, 'soy productols dentro de la funcion obtener productos ls')
         return productoLS;
     }
 
